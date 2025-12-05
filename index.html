@@ -1,557 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>CellFix · Formación en Reparación de Dispositivos Móviles</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    :root {
-      --bg: #f5f7fb;
-      --bg-soft: #ffffff;
-      --primary: #163b6b;
-      --accent: #1f92ff;
-      --text: #283041;
-      --muted: #6b7485;
-      --border-soft: #dde3f0;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-soft: 0 16px 40px rgba(15, 32, 60, 0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #e4ebf8 0, #f7f9fd 60%, #ffffff 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .layout {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 18px 16px 40px;
-    }
-
-    /* HEADER */
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 26px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #1f92ff, #32d1c6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 20px;
-      box-shadow: 0 10px 25px rgba(9, 40, 80, 0.35);
-    }
-
-    .brand-text small {
-      font-size: 11px;
-      text-transform: uppercase;
-      color: var(--muted);
-      letter-spacing: .18em;
-    }
-
-    .brand-text strong {
-      font-size: 17px;
-      display: block;
-      color: var(--primary);
-    }
-
-    nav {
-      display: flex;
-      gap: 16px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    nav a {
-      padding: 6px 10px;
-      border-radius: 999px;
-      transition: background .18s ease, color .18s ease;
-    }
-
-    nav a:hover {
-      background: rgba(31, 146, 255, 0.06);
-      color: var(--primary);
-    }
-
-    /* HERO */
-
-    .hero {
-      background: var(--bg-soft);
-      border-radius: 24px;
-      box-shadow: var(--shadow-soft);
-      padding: 26px 26px 28px;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 20px;
-      margin-bottom: 26px;
-      border: 1px solid var(--border-soft);
-    }
-
-    .hero-kicker {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .hero h1 {
-      font-size: clamp(26px, 3.2vw, 32px);
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .hero p {
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 480px;
-      margin-bottom: 14px;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .pill {
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid #d5def0;
-      background: #f5f8ff;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .btn-primary {
-      padding: 10px 20px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(135deg, #1f92ff, #32d1c6);
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 14px 30px rgba(12, 60, 120, 0.4);
-      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-      box-shadow: 0 18px 40px rgba(12, 60, 120, 0.45);
-    }
-
-    .btn-secondary {
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      background: #ffffff;
-      font-size: 14px;
-      color: var(--primary);
-      cursor: pointer;
-      transition: background .15s ease, color .15s ease;
-    }
-
-    .btn-secondary:hover {
-      background: #f1f4fb;
-    }
-
-    .hero-aside {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: radial-gradient(circle at top, #dde8fb 0, #bccbe5 50%, #9fb7d8 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 16px 16px 14px;
-    }
-
-    .hero-aside img {
-      width: 100%;
-      border-radius: 12px;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-
-    .hero-aside-caption {
-      font-size: 12px;
-      color: #293549;
-    }
-
-    /* SECCIONES GENERALES */
-
-    section {
-      margin-bottom: 26px;
-    }
-
-    .section-card {
-      background: var(--bg-soft);
-      border-radius: 22px;
-      padding: 20px 20px 22px;
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 12px 30px rgba(19, 38, 70, 0.08);
-    }
-
-    .section-card h2 {
-      font-size: 20px;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .section-card p.lead {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    /* SOBRE NOSOTROS */
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 16px;
-    }
-
-    .list-check {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 6px;
-      font-size: 14px;
-    }
-
-    .list-check li {
-      margin-bottom: 6px;
-      position: relative;
-      padding-left: 20px;
-      color: var(--muted);
-    }
-
-    .list-check li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    /* CURSOS */
-
-    .course-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      font-size: 13px;
-    }
-
-    .course-card {
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-soft);
-      background: #f9fbff;
-      padding: 12px 12px 13px;
-    }
-
-    .course-card h3 {
-      font-size: 14px;
-      margin-bottom: 4px;
-      color: var(--primary);
-    }
-
-    .course-meta {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    /* BECAS */
-
-    .scholar-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      font-size: 13px;
-    }
-
-    .scholar-card {
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-soft);
-      background: #f9fbff;
-      padding: 12px 12px 13px;
-    }
-
-    .scholar-card h3 {
-      font-size: 14px;
-      margin-bottom: 4px;
-      color: var(--primary);
-    }
-
-    /* CONTACTO */
-
-    .contact-row {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 16px;
-      font-size: 14px;
-    }
-
-    .contact-box {
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-soft);
-      background: #f9fbff;
-      padding: 12px 12px 14px;
-      color: var(--muted);
-    }
-
-    .contact-box strong {
-      color: var(--primary);
-    }
-
-    footer {
-      margin-top: 10px;
-      font-size: 12px;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .hero-aside {
-        order: -1;
-      }
-      .grid-2,
-      .contact-row {
-        grid-template-columns: 1fr;
-      }
-      .course-grid,
-      .scholar-grid {
-        grid-template-columns: 1fr;
-      }
-      nav {
-        display: none; /* si quieres, luego hacemos menú móvil */
-      }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CellFix – Inicio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="layout">
-    <header>
-      <div class="brand">
-        <div class="brand-logo">C</div>
-        <div class="brand-text">
-          <small>formación técnica</small>
-          <strong>CellFix</strong>
-        </div>
+<header class="nav">
+  <div class="nav-logo"><a href="index.html">CellFix</a></div>
+  <nav class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="cursos.html">Cursos</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-texto">
+      <h1>Formación premium en reparación de celulares</h1>
+      <p>Aprende desde cero, repara como profesional y lanza tu propio servicio técnico.</p>
+      <div class="hero-botones">
+        <a href="cursos.html" class="btn primario">Ver cursos</a>
+        <a href="servicios.html" class="btn secundario">Servicio de reparación</a>
       </div>
-      <nav>
-        <a href="#sobre">Sobre nosotros</a>
-        <a href="#cursos">Cursos</a>
-        <a href="#becas">Becas</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </header>
+    </div>
+    <div class="hero-imagen">
+      <img src="assets/img/hero-kit.jpg" alt="Kit profesional de reparación de celulares" />
+    </div>
+  </section>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero">
-        <div>
-          <div class="hero-kicker">Formación en reparación de dispositivos móviles</div>
-          <h1>Aprende a reparar celulares con un enfoque práctico y profesional</h1>
-          <p>
-            CellFix es un centro de formación técnica que te enseña, paso a paso, a diagnosticar
-            y reparar dispositivos móviles con criterios de taller real y estándares de calidad.
-          </p>
-          <div class="hero-meta">
-            <span class="pill">Enfoque 100% práctico</span>
-            <span class="pill">Sesiones en taller</span>
-            <span class="pill">Acompañamiento docente</span>
-          </div>
-          <div class="hero-actions">
-            <a href="#cursos"><button class="btn-primary">Ver programas de formación</button></a>
-            <a href="#becas"><button class="btn-secondary">Opciones de becas</button></a>
-          </div>
+  <!-- RESUMEN DE CURSOS -->
+  <section class="seccion">
+    <div class="seccion-titulo">
+      <h2>Cursos pensados como un Tesla</h2>
+      <p>Diseño minimalista, enfoque práctico y estándar profesional en cada nivel.</p>
+    </div>
+
+    <div class="cursos-grid">
+      <article class="curso-card mini">
+        <div class="curso-info">
+          <h3>Básico</h3>
+          <p class="precio">S/ 220 – 3 meses</p>
+          <p>Fundamentos y primeras reparaciones.</p>
+          <a href="cursos.html" class="btn fantasma">Ver más</a>
         </div>
-        <aside class="hero-aside">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Cell_Phone_Repair_Tech_%288820566595%29.jpg/640px-Cell_Phone_Repair_Tech_%288820566595%29.jpg" alt="Técnico reparando un teléfono móvil">
-          <div class="hero-aside-caption">
-            Prácticas guiadas en reparación de dispositivos móviles en un entorno de taller.
-          </div>
-        </aside>
-      </section>
+      </article>
 
-      <!-- SOBRE NOSOTROS -->
-      <section id="sobre" class="section-card">
-        <h2>Sobre CellFix</h2>
-        <p class="lead">
-          CellFix nace con el objetivo de ofrecer una formación clara, ordenada y accesible
-          en reparación de dispositivos móviles, combinando fundamentos técnicos con práctica constante.
-        </p>
-        <div class="grid-2">
-          <div>
-            <p>
-              Nuestro enfoque está orientado a quienes buscan aprender una habilidad concreta que
-              les permita incorporarse al mercado laboral, complementar su trabajo actual o emprender
-              su propio servicio de reparación.
-            </p>
-            <ul class="list-check">
-              <li>Contenidos estructurados por módulos y niveles de dificultad.</li>
-              <li>Sesiones presenciales en espacio acondicionado para práctica.</li>
-              <li>Acompañamiento docente durante el proceso de aprendizaje.</li>
-            </ul>
-          </div>
-          <div>
-            <p>
-              Cada programa ha sido diseñado pensando en el ritmo real de aprendizaje, priorizando
-              la comprensión de los procesos antes que la memorización de pasos.
-            </p>
-            <p>
-              Más que un curso puntual, buscamos construir contigo una base sólida para que puedas
-              seguir creciendo en el campo técnico con seguridad y criterio profesional.
-            </p>
-          </div>
+      <article class="curso-card mini">
+        <div class="curso-info">
+          <h3>Intermedio</h3>
+          <p class="precio">S/ 350 – 3 meses</p>
+          <p>Diagnósticos y placas.</p>
+          <a href="cursos.html" class="btn fantasma">Ver más</a>
         </div>
-      </section>
+      </article>
 
-      <!-- CURSOS -->
-      <section id="cursos" class="section-card">
-        <h2>Cursos y programas</h2>
-        <p class="lead">
-          Ofrecemos programas orientados a distintos niveles de experiencia, desde quienes se
-          acercan por primera vez a la reparación hasta quienes desean profundizar en diagnósticos
-          más avanzados.
-        </p>
-        <div class="course-grid">
-          <div class="course-card">
-            <h3>Curso Básico de Reparación</h3>
-            <div class="course-meta">Introducción · Herramientas · Seguridad</div>
-            <p>
-              Ideal para comenzar desde cero: manejo correcto de herramientas, apertura de equipos
-              y solución de fallas frecuentes en pantallas y baterías.
-            </p>
-          </div>
-          <div class="course-card">
-            <h3>Diagnóstico y Fallas Comunes</h3>
-            <div class="course-meta">Diagnóstico · Procedimientos · Pruebas</div>
-            <p>
-              Enfocado en identificar síntomas, realizar pruebas básicas y definir el tipo de
-              intervención que requiere cada equipo.
-            </p>
-          </div>
-          <div class="course-card">
-            <h3>Programa Integral CellFix</h3>
-            <div class="course-meta">Ruta completa de formación</div>
-            <p>
-              Combina los contenidos principales en un solo recorrido formativo, desde la
-              introducción hasta la atención estructurada de casos de reparación.
-            </p>
-          </div>
+      <article class="curso-card mini">
+        <div class="curso-info">
+          <h3>Avanzado</h3>
+          <p class="precio">S/ 400 – 6 meses</p>
+          <p>Microelectrónica y soldadura.</p>
+          <a href="cursos.html" class="btn fantasma">Ver más</a>
         </div>
-      </section>
+      </article>
 
-      <!-- BECAS -->
-      <section id="becas" class="section-card">
-        <h2>Opciones de becas y apoyo</h2>
-        <p class="lead">
-          Sabemos que la inversión en formación es importante. Por ello, contamos con opciones
-          de apoyo para facilitar el acceso a nuestros programas, sujetas a disponibilidad y evaluación.
-        </p>
-        <div class="scholar-grid">
-          <div class="scholar-card">
-            <h3>Beca por compromiso académico</h3>
-            <p>
-              Dirigida a postulantes que demuestren motivación, responsabilidad y disposición
-              para completar el programa de forma satisfactoria.
-            </p>
-          </div>
-          <div class="scholar-card">
-            <h3>Beca para jóvenes emprendedores</h3>
-            <p>
-              Pensada para quienes proyectan iniciar o fortalecer un servicio de reparación
-              como actividad económica principal.
-            </p>
-          </div>
-          <div class="scholar-card">
-            <h3>Facilidades de pago</h3>
-            <p>
-              Alternativas de fraccionamiento supervisadas, con el objetivo de adecuar el pago
-              del programa a las posibilidades del estudiante.
-            </p>
-          </div>
+      <article class="curso-card mini">
+        <div class="curso-info">
+          <h3>Pack completo</h3>
+          <p class="precio">S/ 500 – 1 año</p>
+          <p>Todo el recorrido CellFix.</p>
+          <a href="cursos.html" class="btn fantasma">Ver más</a>
         </div>
-      </section>
+      </article>
+    </div>
+  </section>
 
-      <!-- CONTACTO -->
-      <section id="contacto" class="section-card">
-        <h2>Contacto e información</h2>
-        <p class="lead">
-          Si deseas más información sobre fechas, costos o contenido detallado de los programas,
-          puedes escribirnos y con gusto responderemos a tus consultas.
-        </p>
-        <div class="contact-row">
-          <div class="contact-box">
-            <p><strong>Correo:</strong> info@cellfix.lat (ejemplo)</p>
-            <p><strong>Teléfono / WhatsApp:</strong> +51 9XX XXX XXX</p>
-            <p><strong>Ubicación:</strong> Lima, Perú</p>
-          </div>
-          <div class="contact-box">
-            <p>
-              También puedes indicarnos brevemente tu situación actual (estudiante, trabajador,
-              emprendiendo, etc.) y cuál es tu objetivo principal al estudiar reparación de
-              dispositivos móviles.
-            </p>
-            <p>
-              Con esa información podremos orientarte mejor sobre el programa más adecuado para ti.
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
+  <!-- POR QUÉ CELLFIX -->
+  <section class="seccion seccion-oscura">
+    <div class="seccion-titulo centrado">
+      <h2>¿Por qué CellFix?</h2>
+      <p>La experiencia de un auto premium, aplicada a tu formación técnica.</p>
+    </div>
+    <div class="reparaciones-grid">
+      <article class="reparacion-card">
+        <h3>Diseño minimalista</h3>
+        <p>Todo está organizado y limpio para que te concentres en aprender.</p>
+      </article>
+      <article class="reparacion-card">
+        <h3>Aprendizaje práctico</h3>
+        <p>Cada módulo se centra en reparaciones reales y problemas del día a día.</p>
+      </article>
+      <article class="reparacion-card">
+        <h3>Kit de inicio incluido</h3>
+        <p>Empiezas a practicar desde el primer día con herramientas reales.</p>
+      </article>
+      <article class="reparacion-card">
+        <h3>Enfoque en emprendimiento</h3>
+        <p>Te preparamos para abrir tu propio servicio técnico.</p>
+      </article>
+    </div>
+  </section>
+</main>
 
-    <footer>
-      © <span id="year"></span> CellFix · Centro de formación en reparación de dispositivos móviles.
-    </footer>
-  </div>
+<footer class="footer">
+  <p>© 2025 CellFix. Todos los derechos reservados.</p>
+</footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CellFix – Cursos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="nav">
+  <div class="nav-logo"><a href="index.html">CellFix</a></div>
+  <nav class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="cursos.html" class="activo">Cursos</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+</header>
+
+<main>
+  <section class="seccion">
+    <div class="seccion-titulo">
+      <h2>Elige tu ruta CellFix</h2>
+      <p>Como elegir tu modelo Tesla: cuatro opciones, un solo estándar profesional.</p>
+    </div>
+
+    <div class="cursos-grid">
+      <!-- Básico -->
+      <article class="curso-card" data-curso="basico">
+        <img src="assets/img/curso-basico.png" alt="Curso básico de reparación de celulares" />
+        <div class="curso-info">
+          <h3>Curso Básico</h3>
+          <p class="precio">S/ 220</p>
+          <p>Fundamentos, herramientas y reparaciones iniciales.</p>
+          <ul>
+            <li>Duración: 3 meses</li>
+            <li>Incluye kit de inicio</li>
+            <li>Clases prácticas desde la primera semana</li>
+          </ul>
+          <button class="btn fantasma btn-detalle">Ver detalles</button>
+        </div>
+      </article>
+
+      <!-- Intermedio -->
+      <article class="curso-card" data-curso="intermedio">
+        <img src="assets/img/curso-intermedio.png" alt="Curso intermedio de reparación de celulares" />
+        <div class="curso-info">
+          <h3>Curso Intermedio</h3>
+          <p class="precio">S/ 350</p>
+          <p>Diagnóstico, placas y fallas frecuentes.</p>
+          <ul>
+            <li>Duración: 3 meses</li>
+            <li>Casos reales guiados</li>
+            <li>Acceso a comunidad privada</li>
+          </ul>
+          <button class="btn fantasma btn-detalle">Ver detalles</button>
+        </div>
+      </article>
+
+      <!-- Avanzado -->
+      <article class="curso-card" data-curso="avanzado">
+        <img src="assets/img/curso-avanzado.png" alt="Curso avanzado de reparación de celulares" />
+        <div class="curso-info">
+          <h3>Curso Avanzado</h3>
+          <p class="precio">S/ 400</p>
+          <p>Microelectrónica, soldadura avanzada y componentes.</p>
+          <ul>
+            <li>Duración: 6 meses</li>
+            <li>Estación de soldado y microscopio</li>
+            <li>Proyectos avanzados</li>
+          </ul>
+          <button class="btn fantasma btn-detalle">Ver detalles</button>
+        </div>
+      </article>
+
+      <!-- Pack completo -->
+      <article class="curso-card" data-curso="pack">
+        <img src="assets/img/curso-pack.jpg" alt="Pack completo CellFix" />
+        <div class="curso-info">
+          <h3>Pack Completo</h3>
+          <p class="precio">S/ 500</p>
+          <p>Todo el recorrido CellFix para emprender con fuerza.</p>
+          <ul>
+            <li>Duración: 1 año</li>
+            <li>Incluye todos los módulos</li>
+            <li>Acompañamiento para tu negocio</li>
+          </ul>
+          <button class="btn fantasma btn-detalle">Ver detalles</button>
+        </div>
+      </article>
+    </div>
+
+    <!-- PANEL SHOWROOM -->
+    <div class="curso-detalle">
+      <div class="detalle-imagen">
+        <img id="detalle-imagen" src="assets/img/curso-basico.jpg" alt="Vista del curso seleccionado" />
+      </div>
+      <div class="detalle-info">
+        <h3 id="detalle-titulo">Selecciona un curso</h3>
+        <p id="detalle-descripcion">
+          Haz clic en cualquiera de los cursos para ver una vista detallada con duración, contenido y herramientas incluidas.
+        </p>
+        <ul id="detalle-lista"></ul>
+        <a href="contacto.html" class="btn primario">Quiero inscribirme</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© 2025 CellFix. Todos los derechos reservados.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
